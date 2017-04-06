@@ -19,7 +19,12 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationViewController = segue.destination as? MenuViewController {
+            destinationViewController.transitioningDelegate = self
+        }
+    }
     //MARK: Actions
     
     
@@ -28,3 +33,16 @@ class HomeViewController: UIViewController {
     //this is a third comment
 }
 
+extension HomeViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return PresentMenuAnimator()
+    }
+}
+
+
+/*
+ NOTES:
+ Side bar comes out, but:
+    1) no animation (might be lag)
+    2) snapshot doesnt appear to display ( just white to right of green )
+ */

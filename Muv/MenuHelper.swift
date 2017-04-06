@@ -31,7 +31,7 @@ struct MenuHelper {
                 pointOnAxis = translationInView.y
                 axisLength = viewBounds.height
             case .Left, .Right:
-                pointOnAxis = trasnlationInView.x
+                pointOnAxis = translationInView.x
                 axisLength = viewBounds.width
         }
         
@@ -56,20 +56,20 @@ struct MenuHelper {
         guard let interactor = interactor else { return }
         
         switch gestureState {
-            case .Began:
+            case .began:
                 interactor.hasStarted = true
                 triggerSegue()
-            case .Changed:
+            case .changed:
                 interactor.shouldFinish = progress > percentThreshold
-                interactor.updateInteractiveTransition(progress)
-            case .Cancelled:
+                interactor.update(progress)
+            case .cancelled:
                 interactor.hasStarted = false
-                interactor.cancelInteractiveTransition()
-            case .Ended:
+                interactor.cancel()
+            case .ended:
                 interactor.hasStarted = false
                 interactor.shouldFinish
-                    ? interactor.finishInteractiveTransition()
-                    : interactor.cancelInteractiveTransition()
+                    ? interactor.finish()
+                    : interactor.cancel()
             default:
                 break
         }
