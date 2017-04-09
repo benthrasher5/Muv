@@ -62,28 +62,28 @@ open class SideMenuManager : NSObject {
      - viewSlideInOut: The existing view slides out while the menu slides in.
      - menuDissolveIn: The menu dissolves in over the existing view controller.
      */
-    open static var menuPresentMode: MenuPresentMode = .viewSlideOut
+    open static var menuPresentMode: MenuPresentMode = .menuSlideIn
     
     /// Prevents the same view controller (or a view controller of the same class) from being pushed more than once. Defaults to true.
     open static var menuAllowPushOfSameClassTwice = true
     
     /// Width of the menu when presented on screen, showing the existing view controller in the remaining space. Default is 75% of the screen width.
-    open static var menuWidth: CGFloat = max(round(min((appScreenRect.width), (appScreenRect.height)) * 0.75), 240)
+    open static var menuWidth: CGFloat = max(round(min((appScreenRect.width), (appScreenRect.height)) * 0.40), 240)
     
     /// Duration of the animation when the menu is presented without gestures. Default is 0.35 seconds.
-    open static var menuAnimationPresentDuration: Double = 0.35
+    open static var menuAnimationPresentDuration: Double = 0.15
     
     /// Duration of the animation when the menu is dismissed without gestures. Default is 0.35 seconds.
-    open static var menuAnimationDismissDuration: Double = 0.35
+    open static var menuAnimationDismissDuration: Double = 0.15
     
     /// Duration of the remaining animation when the menu is partially dismissed with gestures. Default is 0.2 seconds.
-    open static var menuAnimationCompleteGestureDuration: Double = 0.20
+    open static var menuAnimationCompleteGestureDuration: Double = 0.10
     
     /// Amount to fade the existing view controller when the menu is presented. Default is 0 for no fade. Set to 1 to fade completely.
-    open static var menuAnimationFadeStrength: CGFloat = 0
+    open static var menuAnimationFadeStrength: CGFloat = 0.5
     
     /// The amount to scale the existing view controller or the menu view controller depending on the `menuPresentMode`. Default is 1 for no scaling. Less than 1 will shrink, greater than 1 will grow.
-    open static var menuAnimationTransformScaleFactor: CGFloat = 1
+    open static var menuAnimationTransformScaleFactor: CGFloat = 0.95
     
     /// The background color behind menu animations. Depending on the animation settings this may not be visible. If `menuFadeStatusBar` is true, this color is used to fade it. Default is black.
     open static var menuAnimationBackgroundColor: UIColor?
