@@ -21,6 +21,7 @@ extension PresentMenuAnimator : UIViewControllerAnimatedTransitioning {
             let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
             let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
         else {
+            print("error in first guard, animateTransition")
             return
         }
         
@@ -31,12 +32,16 @@ extension PresentMenuAnimator : UIViewControllerAnimatedTransitioning {
         
         //puts a snapshot of main menu over menu to persist appearance
         guard let snapshot = fromVC.view.snapshotView(afterScreenUpdates: false) else {
+            print("Couldn't get snapshot")
             return
         }
+        print("got snapshot")
         snapshot.tag = MenuHelper.snapshotNumber
         snapshot.isUserInteractionEnabled = false
         snapshot.layer.shadowOpacity = 0.7
         containerView.insertSubview(snapshot, aboveSubview: toVC.view)
+        fromVC.view.isHidden = true
+        
         
         //
         UIView.animate(withDuration: transitionDuration(using: transitionContext),
