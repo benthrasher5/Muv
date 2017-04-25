@@ -15,7 +15,7 @@ class Muv {
     var name: String
     var photo: UIImage?
     var peopleCount: Int
-    var dealText: String?
+    var dealsText: String?
     
     init?(name: String) {
         if name.isEmpty {
