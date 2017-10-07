@@ -4,13 +4,16 @@ import UIKit
 class MuvService {
     
     //MARK: properties
-    var cache: [Muv] = []
+    static var cache: [Muv]?
     
     
     //MARK: public functions
     static func getMuvs() -> [Muv] {
-        let muvs = getSampleMuvs()
-        return muvs
+        if let cached = cache {
+            return cached
+        } else {
+            return fetchMuvs()
+        }
     }
     
     //MARK: private functions

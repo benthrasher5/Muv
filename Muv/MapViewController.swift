@@ -25,6 +25,11 @@ class MapViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func logoutButtonPressed(_ sender: Any) {
+        AuthService.logout(then: {
+            self.performSegue(withIdentifier: "logoutSegue", sender: nil)
+        })
+    }
     /*
     // MARK: - Navigation
 
