@@ -11,18 +11,24 @@ import Foundation
 
 class Muv {
     
-    //MARK: Properties
-    var name: String
-    var photo: UIImage?
-    var peopleCount: Int
-    var dealsText: String?
+    //MARK: Properties 
     
-    init?(name: String) {
-        if name.isEmpty {
-            return nil
-        }
-        
-        self.name = name
-        self.peopleCount = 0
+    var name: String
+    var description: String
+    var specialText: String?
+    var imageFolderURL: String?
+    var location: String?
+    
+    init(name: String, description: String, specialText: String?, imageFolderURL: String?, location: String?) {
+    
+            self.name = name
+            self.description = description
+            self.specialText = specialText
+            self.imageFolderURL = imageFolderURL
+            self.location = location
+    
     }
+    
+    
+    
 }
