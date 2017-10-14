@@ -7,21 +7,28 @@
 //
 
 import UIKit
+import FacebookLogin
 
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var usernameInputField: UITextField!
     @IBOutlet weak var passwordInputField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-
+    @IBOutlet weak var facebookLoginButtonContainer: UIStackView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let preferences = UserDefaults.standard
-        if let session = preferences.object(forKey: "session") as? String
-        {
-            AuthService.checkSessionAndLogin(with: session, callback: self.loginSuccessful)
-        }
+        let loginButton = LoginButton(readPermissions: [ .PublicProfile ])
+        loginButton.center = view.center
+        
+        view.addSubview(loginButton)
+
+//        let preferences = UserDefaults.standard
+//        if let session = preferences.object(forKey: "session") as? String
+//        {
+//            AuthService.checkSessionAndLogin(with: session, callback: self.loginSuccessful)
+//        }
     }
 
     override func didReceiveMemoryWarning() {

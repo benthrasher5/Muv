@@ -91,7 +91,7 @@
         <!--Name-->
         <scene sceneID="zHm-1X-Pfx">
             <objects>
-                <tableViewController id="tvq-eH-MOn" sceneMemberID="viewController">
+                <tableViewController id="tvq-eH-MOn" customClass="SideMenuViewController" customModule="Muv" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0Fh-ms-piY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -243,6 +243,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Name" id="Qp8-gU-7d5"/>
+                    <connections>
+                        <outlet property="SideMenuHeader" destination="Qp8-gU-7d5" id="3wd-Rb-ucY"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kz2-vl-Ydf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -344,11 +347,16 @@
                                     <action selector="loginButtonPressed:" destination="Tca-RU-Dag" eventType="touchUpInside" id="7hO-H4-Er3"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LJT-JJ-iD5">
+                                <rect key="frame" x="132" y="395" width="110" height="107"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="facebookLoginButtonContainer" destination="LJT-JJ-iD5" id="xEb-VK-p5p"/>
                         <outlet property="loginButton" destination="Zg3-tL-zbf" id="OOO-dF-Fdk"/>
                         <outlet property="passwordInputField" destination="wcn-vj-SZ6" id="8UJ-Ni-RQ6"/>
                         <outlet property="usernameInputField" destination="MZ5-k2-oCX" id="Z5c-rV-mfj"/>

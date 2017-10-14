@@ -12,13 +12,13 @@ class User {
     
     //MARK: Properties
     var username: String
-    var name: [String: String]
+    var firstName: String
+    var lastName: String
     var photoURL: String?
-    var settingsId: String
     
-    init?(username: String, firstName: String, lastName: String, settingsId: String) {
+    init?(username: String, firstName: String, lastName: String) {
         self.username = username
-        self.name = ["first": firstName, "last": lastName]
-        self.settingsId = settingsId
+        self.firstName = firstName
+        self.lastName = lastName
     }
 }

@@ -20,6 +20,7 @@ class AuthService {
                 callback()
             } else {
                 UserDefaults.standard.set(nil, forKey: "session")
+                UserDefaults.standard.set(nil, forKey: "userId")
             }
         })
     }
@@ -29,9 +30,9 @@ class AuthService {
         let dict = ["username" : username, "password" : password]
         APIService.POST(route: "/login", body: dict, callback: { error, data in
             let dict = data! as [String: Any]
-            if let session = dict["session"] as? String {
-                let preferences = UserDefaults.standard
-                preferences.set(session, forKey: "session")
+            if let session = dict["session"] as? String, let userId = dict["userId"] as? String {
+                UserDefaults.standard.set(session, forKey: "session")
+                UserDefaults.standard.set(userId, forKey: "userId")
             }
             callback()
             return
