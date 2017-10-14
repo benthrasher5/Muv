@@ -6,44 +6,54 @@ class MuvService {
     //MARK: properties
     static var cache: [Muv]?
     
+    static func getMuvs(_ ids: [String], then callback: @escaping ([Muv]) -> Void) -> Void {
+        var muvs: [Muv] = []
+        for id in ids {
+            if let cached = cache[id] {
+                muvs.append(cached)
+            } else {
+                getMuv(id, then: { muv in
+                    muvs.append(muv!)
+                })
+            }
+        }
+        
+        callback(muvs)
+    }
     
-    //MARK: public functions
-    static func getMuvs() -> [Muv] {
-        if let cached = cache {
-            return cached
+    
+    static func getMuv(_ id: String, then callback: @escaping (Muv?) -> Void) -> Void {
+        if let cached = cache[id] {
+            callback(cached)
         } else {
-            return fetchMuvs()
+            fetchAndCacheMuv(id, then: callback)
         }
     }
     
-    //MARK: private functions
-    private static func fetchMuvs() -> [Muv] {
-        return getSampleMuvs()
+    
+    private static func fetchAndCacheMuv(_ id: String, then callback: @escaping (Muv?) -> Void) -> Void {
+        APIService.GET(route: "/API/muvs/" + id, callback: { error, data in
+            if error == nil, data != nil {
+                let muv = parseMuvFromDict(using: data!)
+                cache[data!["_id"] as! String] = muv
+                callback(muv)
+            }
+        })
     }
     
-    private static func getSampleMuvs() -> [Muv] {
-        guard let muv1 = Muv(name: "Harpos") else {
-            fatalError("Unable to load sample muv 1")
-        }
-        muv1.peopleCount = 27
-        muv1.dealsText = "$1 Shots, $2 Bottles, $3 Wells"
-        muv1.photo = UIImage(named: "HarposLogo")
+    private static func parseMuvFromDict(using dict: [String: Any]) -> Muv {
+        
+        let id = dict["_id"] as! String
+        let name: String! = dict["name"]
+        let description: String! = dict["description"]
+        let specialText: String! = dict["specialText"]
+        let imageFolderURL: String! = dict["imageFolderURL"]
+        let location: String! = dict["location"]
         
         
-        guard let muv2 = Muv(name: "My House") else {
-            fatalError("Unable to load sample muv 2")
-        }
-        muv2.peopleCount = 13
-        muv2.dealsText = "$5 Triple-Wells, $2 Shots"
-        muv2.photo = UIImage(named: "MyHouseLogo")
-        
-        guard let muv3 = Muv(name: "Field House") else {
-            fatalError("Unable to load sample muv 3")
-        }
-        muv3.peopleCount = 9
-        muv3.dealsText = "Penny Pitchers"
-        muv3.photo = UIImage(named: "FieldHouseLogo")
-        
-        return [muv1, muv2, muv3]
+        return Muv(id: id, name: name, description: description, specialText: specialText, imageFolderURL: imageFolderURL, location: location)!
     }
+    
+    
 }
+
