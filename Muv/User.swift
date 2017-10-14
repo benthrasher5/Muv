@@ -11,12 +11,14 @@ import Foundation
 class User {
     
     //MARK: Properties
+    var id: String
     var username: String
     var firstName: String
     var lastName: String
     var photoURL: String?
     
-    init?(username: String, firstName: String, lastName: String) {
+    init?(id: String, username: String, firstName: String, lastName: String) {
+        self.id = id
         self.username = username
         self.firstName = firstName
         self.lastName = lastName
