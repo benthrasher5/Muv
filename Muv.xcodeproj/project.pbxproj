@@ -23,7 +23,8 @@
 		3D72D8081E96DF970058C4CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D72D8071E96DF970058C4CF /* Assets.xcassets */; };
 		3D72D80B1E96DF970058C4CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D72D8091E96DF970058C4CF /* LaunchScreen.storyboard */; };
 		3D72D8161E96DF970058C4CF /* MuvTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D72D8151E96DF970058C4CF /* MuvTests.swift */; };
-		7635C6C11F8F1216004365CF /* Actions .swift in Sources */ = {isa = PBXBuildFile; fileRef = 7635C6C01F8F1216004365CF /* Actions .swift */; };
+		7635C6C11F8F1216004365CF /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7635C6C01F8F1216004365CF /* Action.swift */; };
+		844AB5821F92BA8F009A2FD0 /* ActionService.Swift in Sources */ = {isa = PBXBuildFile; fileRef = 844AB5811F92BA8F009A2FD0 /* ActionService.Swift */; };
 		84FE1EC11F8442490037BFF1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE1EC01F8442490037BFF1 /* LoginViewController.swift */; };
 		84FE1EC31F87CC3C0037BFF1 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE1EC21F87CC3C0037BFF1 /* AuthService.swift */; };
 		84FE1EC51F87DCA30037BFF1 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE1EC41F87DCA30037BFF1 /* UserService.swift */; };
@@ -67,7 +68,8 @@
 		3D72D8171E96DF970058C4CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DD40A6A8885F95F32E00ABA /* Pods-MuvTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuvTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MuvTests/Pods-MuvTests.debug.xcconfig"; sourceTree = "<group>"; };
 		576E50A464B4D5D5912648AB /* Pods-Muv.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Muv.release.xcconfig"; path = "Pods/Target Support Files/Pods-Muv/Pods-Muv.release.xcconfig"; sourceTree = "<group>"; };
-		7635C6C01F8F1216004365CF /* Actions .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Actions .swift"; sourceTree = "<group>"; };
+		7635C6C01F8F1216004365CF /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		844AB5811F92BA8F009A2FD0 /* ActionService.Swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionService.Swift; sourceTree = "<group>"; };
 		84FE1EC01F8442490037BFF1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		84FE1EC21F87CC3C0037BFF1 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		84FE1EC41F87DCA30037BFF1 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -120,7 +122,7 @@
 			children = (
 				3D171D1F1E9AF895001ACDD2 /* Muv.swift */,
 				84FE1EC61F87DCF50037BFF1 /* User.swift */,
-				7635C6C01F8F1216004365CF /* Actions .swift */,
+				7635C6C01F8F1216004365CF /* Action.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -132,6 +134,7 @@
 				84FE1EC21F87CC3C0037BFF1 /* AuthService.swift */,
 				84FE1EC41F87DCA30037BFF1 /* UserService.swift */,
 				84FE1EC81F880F3D0037BFF1 /* APIService.swift */,
+				844AB5811F92BA8F009A2FD0 /* ActionService.Swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -431,12 +434,13 @@
 				3D72D8031E96DF970058C4CF /* HomeViewController.swift in Sources */,
 				84FE1EC31F87CC3C0037BFF1 /* AuthService.swift in Sources */,
 				84FE1EC71F87DCF50037BFF1 /* User.swift in Sources */,
+				844AB5821F92BA8F009A2FD0 /* ActionService.Swift in Sources */,
 				84FE1ECB1F8C15BE0037BFF1 /* SideMenuViewController.swift in Sources */,
 				3D171D201E9AF895001ACDD2 /* Muv.swift in Sources */,
 				3D171D1C1E9AF441001ACDD2 /* MapViewController.swift in Sources */,
 				3D171D281E9D82CB001ACDD2 /* MyMuvsViewController.swift in Sources */,
 				3D171D261E9D82BB001ACDD2 /* CalendarViewController.swift in Sources */,
-				7635C6C11F8F1216004365CF /* Actions .swift in Sources */,
+				7635C6C11F8F1216004365CF /* Action.swift in Sources */,
 				3D72D8011E96DF970058C4CF /* AppDelegate.swift in Sources */,
 				3D171D2A1E9D82DD001ACDD2 /* SettingsViewController.swift in Sources */,
 			);

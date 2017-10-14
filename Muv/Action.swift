@@ -9,15 +9,16 @@
 import Foundation
 
 
-class Actions{
+class Action {
     
-    
+    var id: String
     var userId: String
     var muvId: String
     var datetime: String
     
-    init?(userId: String, muvId: String, datetime: String) {
+    init?(id: String, userId: String, muvId: String, datetime: String) {
     
+        self.id = id
         self.userId = userId
         self.muvId = muvId
         self.datetime = datetime

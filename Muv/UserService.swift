@@ -37,18 +37,19 @@ class UserService {
         APIService.GET(route: "/API/users/" + id, callback: { error, data in
             if error == nil, data != nil {
                 let user = parseUserFromDict(using: data!)
-                cache[data!["_id"] as! String] = user
+                cache[user.id] = user
                 callback(user)
             }
         })
     }
     
     private static func parseUserFromDict(using dict: [String: Any]) -> User {
+        let id = dict["_id"] as! String
         let nameDict = dict["name"] as! [String : String]
         let firstName: String! = nameDict["first"]
         let lastName: String! = nameDict["last"]
         let username = dict["username"] as! String
         
-        return User(username: username, firstName: firstName, lastName: lastName)!
+        return User(id: id, username: username, firstName: firstName, lastName: lastName)!
     }
 }
