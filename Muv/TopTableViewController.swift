@@ -18,8 +18,10 @@ class TopTableViewController: UITableViewController {
         // Do any additional setup after loading the view.
         
         //get muvs to populate from muvservice
-        muvs = MuvService.getMuvs()
-    }
+        MuvService.getMuvs( then: { data in
+            muvs = data
+        
+    })
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -47,8 +49,10 @@ class TopTableViewController: UITableViewController {
         
         //configure the cell
         cell.nameLabel.text = muv.name
-        cell.descriptionLabel.text = muv.dealsText
-        cell.peopleCountLabel.text = String(muv.peopleCount)
+        cell.descriptionLabel.text = muv.description
+        HeadCountService.getHeadCount( muv.id, then: { data in
+            cell.peopleCountLabel = data
+        })
         
         return cell
     }
@@ -62,4 +66,5 @@ class TopTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+}
 }
