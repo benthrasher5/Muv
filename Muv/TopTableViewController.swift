@@ -18,8 +18,10 @@ class TopTableViewController: UITableViewController {
         // Do any additional setup after loading the view.
         
         //get muvs to populate from muvservice
-        muvs = MuvService.getSampleMuvs()
-    }
+        MuvService.getMuvs( then: { data in
+            muvs = data
+        
+    })
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -48,6 +50,9 @@ class TopTableViewController: UITableViewController {
         //configure the cell
         cell.nameLabel.text = muv.name
         cell.descriptionLabel.text = muv.description
+        HeadCountService.getHeadCount( muv.id, then: { data in
+            cell.peopleCountLabel = data
+        })
         
         return cell
     }
