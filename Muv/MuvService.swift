@@ -8,7 +8,7 @@ class MuvService {
     
     static func getSampleMuvs() -> [Muv] {
         var a: [Muv] = []
-        a.append(Muv(id: "abc", name: "SwiftSample1", description: "This is the first ", specialText: "idk", imageFolderURL: "yea", location: "idk either"))
+        a.append(Muv(id: "59dee37c7a0357c05dd5f39c", name: "SwiftSample1", description: "This is the first ", specialText: "idk", imageFolderURL: "yea", location: "idk either"))
         
         return a
     }

@@ -10,13 +10,20 @@ import Foundation
 
 class HeadCountService{
     
-    private func getHeadCount(_ id: String, then callback: @escaping HeadCount?) -> Void {
+    static func getHeadCount(_ id: String, then callback: @escaping (Int?) -> Void) {
         APIService.GET(route: "/headcount/" + id, callback: { error, data in
             if error == nil, data != nil {
-                let headcount = data
+                let headcount = parseHeadcount(from: data!)
                 callback(headcount)
             }
         })
+    }
+    
+    private static func parseHeadcount(from data: [String: Any] ) -> Int {
+        let countString = data["headcount"] as! String
+        let count = Int(countString)
+        
+        return count!
     }
     
 }
