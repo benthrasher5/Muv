@@ -15,9 +15,14 @@ class APIService {
     
     //MARK: Public functions
     //TODO: make body more like a json type, not just string to string. Must conform to encodable
-    static func POST(route:String, body:[String: String], callback:@escaping (String?, [String: Any]?) -> Void) {
+    static func POST(route:String, body:[String: Any], callback:@escaping (String?, Any) -> Void) {
         
-        guard let requestBodyJSON = try? JSONEncoder().encode(body) else {
+//        guard let requestBodyJSON = try? JSONEncoder().encode(body) else {
+//            callback("invalid json body", {})
+//            return
+//        }
+        guard let requestBodyJSON = try? JSONSerialization.data(withJSONObject: body, options: []) else {
+            callback("invalid json body", {})
             return
         }
         
@@ -30,7 +35,7 @@ class APIService {
         let task = URLSession.shared.uploadTask(with: request, from: requestBodyJSON) { data, response, error in
             if error != nil {
                 DispatchQueue.main.async {
-                    callback("transport error", nil)
+                    callback("transport error", {})
                 }
             }
             if let response = response as? HTTPURLResponse {
@@ -40,10 +45,15 @@ class APIService {
                         DispatchQueue.main.async {
                             callback(nil, dict)
                         }
+                    } else if let array = json as? [Any] {
+                        DispatchQueue.main.async {
+                            callback(nil, array)
+                        }
                     }
+                    
                 } else {
                     DispatchQueue.main.async {
-                        callback("404 error", nil)
+                        callback("404 error", {})
                     }
                 }
             }

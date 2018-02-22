@@ -18,7 +18,13 @@ class TopTableViewController: UITableViewController {
         // Do any additional setup after loading the view.
         
         //get muvs to populate from muvservice
-        muvs = MuvService.getSampleMuvs()
+        
+        let ids = ["59dee37c7a0357c05dd5f39c", "59dee3d27a0357c05dd5f3c9", "59dee41c7a0357c05dd5f3ee", "59dee45b7a0357c05dd5f40e", "59dee4967a0357c05dd5f42e"]
+        
+        MuvService.getMuvs(ids, then: { (gotMuvs) in
+            self.muvs = gotMuvs
+            self.tableView.reloadData()
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,7 +40,7 @@ class TopTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //returns the amount of cells that should be in each section
-        return muvs.count
+        return self.muvs.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,7 +49,7 @@ class TopTableViewController: UITableViewController {
         }
         
         //get the right muv
-        let muv = muvs[indexPath.row]
+        let muv = self.muvs[indexPath.row]
         
         //configure the cell
         cell.nameLabel.text = muv.name
